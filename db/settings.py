@@ -25,7 +25,7 @@ SECRET_KEY = 'wk5z6!dq&dt)4y^l!7@fz@ffkk3_3f18zyhe0k6k^$9(+wc-p5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://webmd.herokuapp.com',]
 
 
 # Application definition
