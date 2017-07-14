@@ -17,7 +17,7 @@ class Symptoms(models.Model):
     def publish(self):
         self.save()
     def __str__(self):
-        return self.name
+        return self.symptom
 class Dataset(models.Model):
     disease = models.ForeignKey(Disease)
     symptom = models.ForeignKey(Symptoms)
