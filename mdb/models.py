@@ -5,15 +5,14 @@ from django.utils import timezone
 
 # Create your models here.
 class Disease(models.Model):
-    name = models.TextField()
-   # symptoms = models.TextField()
+    name = models.CharField(max_length=200)
     occur = models.IntegerField()
     def publish(self):
         self.save()
     def __str__(self):
         return self.name
 class Symptoms(models.Model):
-    symptom = models.TextField()
+    symptom = models.CharField(max_length=200)
     def publish(self):
         self.save()
     def __str__(self):
@@ -24,4 +23,4 @@ class Dataset(models.Model):
     def publish(self):
         self.save()
     def __str__(self):
-        return self.name
+        return str(self.id)
