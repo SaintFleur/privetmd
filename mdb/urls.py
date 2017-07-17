@@ -5,7 +5,7 @@ from mdb import views
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
-    url(r'^disease/',views.DiseaseList.as_view()),
+    url(r'^dataset/',views.DatasetList.as_view()),
 
 
 ]

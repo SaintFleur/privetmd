@@ -1,11 +1,11 @@
 from rest_framework import serializers
 from .models import Disease,Symptoms,Dataset
 
-class DiseaseSerializer(serializers.ModelSerializer):
+class DatasetSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model= Disease
-        fields=('name','occur',)
+        model=Dataset
+        fields=('disease',)
 
 
 
