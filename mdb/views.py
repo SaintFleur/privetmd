@@ -1,7 +1,11 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Disease,Symptoms,Dataset
+from .serializers import DiseaseSerializer
+from rest_framework import status
+from rest_framework.views import APIView
+from rest_framework.response import Response
 
 import csv
 # Create your views here.
@@ -26,3 +30,26 @@ def index(request):
 			#print ('Error',a,b)
 
 	return render(request, 'index.html')
+
+class DiseaseList(APIView):
+
+	def get(self,request):
+		disease = Disease.objects.all()
+		serializer=DiseaseSerializer(disease,many=True)
+		return Response(serializer.data)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
