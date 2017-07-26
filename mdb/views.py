@@ -11,7 +11,7 @@ import django_filters.rest_framework
 import csv
 # Create your views here.
 def index(request):
-	with open('symptoms.csv',encoding='utf8') as csvfile:
+	with open('csvfile2.csv',encoding='utf8') as csvfile:
 		reader = csv.DictReader(csvfile)
 		for row in reader:
 			a='abc'
