@@ -16,12 +16,12 @@ def index(request):
 		for row in reader:
 			a = row['a']
 			b = row['b']
-			d = Diseases.objects.filter(name=a)
+			d = Disease.objects.filter(name=a)
 			s = Symptoms.objects.filter(symptom=b)
+			print('I got here2', d)
 			ds = Dataset()
 			for i in d:
-				print(i.id)
-				ds.disease = Diseases.objects.get(id=i.id)
+				ds.disease = Disease.objects.get(id=i.id)
 			for i in s:
 				print(i.id)
 				ds.symptom =Symptoms.objects.get(id=i.id)

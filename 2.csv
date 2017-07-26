@@ -1,7 +1,7 @@
 a,b
 UMLS:C0020538_hypertensive-disease,3363
 UMLS:C0011847_diabetes,1421
-UMLS:C0011570_depressionbackgroundAnimental^UMLS:C0011581_depressive disorder,1337
+UMLS:C0011570_depression  mental^UMLS:C0011581_depressive disorder,1337
 UMLS:C0010054_coronary-arteriosclerosis^UMLS:C0010068_coronary heart disease,1284
 UMLS:C0032285_pneumonia,1029
 UMLS:C0018802_failure-heart congestive,963
