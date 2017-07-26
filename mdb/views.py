@@ -21,7 +21,7 @@ def index(request):
 			ds = Dataset()
 			for i in d:
 				print(i.id)
-				ds.disease = Disease.objects.get(id=i.id)
+				ds.name = Disease.objects.get(id=i.id)
 			for i in s:
 				print(i.id)
 				ds.symptom =Symptoms.objects.get(id=i.id)
