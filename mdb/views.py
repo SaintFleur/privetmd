@@ -39,25 +39,16 @@ def index(request):
 #         return queryset.filter(owner=request.user)
 
 
-
-
-
 class DatasetList(APIView):
-
 	def get(self,request):
 		dataset =Dataset.objects.all()
 		serializer = DatasetSerializer(dataset, many=True)
-		symptom = self.request.query_params.get('symptom', None)
+		symptom = self.request.query_params.get('symptom',None)
 		if symptom is not None:
-			dataset=dataset.filter(symptom=symptom)
+			dataset=dataset.filter(symptom=symptom).order_by( '-disease_id' )
 			serializer = DatasetSerializer(dataset, many=True)
-
+			print(repr(serializer))
 		return Response(serializer.data)
-
-
-
-
-
 
 
 

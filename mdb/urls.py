@@ -6,6 +6,7 @@ from mdb import views
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^dataset/',views.DatasetList.as_view()),
+    url(r'^disease/', views.DatasetList.as_view()),
 
 
 ]

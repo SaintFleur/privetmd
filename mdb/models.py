@@ -23,4 +23,4 @@ class Dataset(models.Model):
     def publish(self):
         self.save()
     def __str__(self):
-        return str(self.id)
+        return str(self.disease.name)
