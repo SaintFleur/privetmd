@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.shortcuts import render, get_object_or_404
-from .models import Diseases,Symptoms,Dataset
+from .models import Disease,Symptoms,Dataset
 from .serializers import DatasetSerializer
 from rest_framework import status
 from rest_framework.views import APIView
