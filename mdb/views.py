@@ -15,7 +15,6 @@ def index(request):
 		reader = csv.DictReader(csvfile)
 		for row in reader:
 			a='abc'
-			b=int(row['b'])
 			Diseases = Symptoms()
 			Diseases.symptom = row['a']
 			Diseases.save()
