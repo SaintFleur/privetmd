@@ -29,4 +29,4 @@ def index(request):
 			#except :
 			#	print ('Error',a,b)
 
-	return render(request, 'index.html')
+	return render(request				, 'index.html')
