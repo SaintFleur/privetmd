@@ -11,6 +11,26 @@ import django_filters.rest_framework
 import csv
 # Create your views here.
 def index(request):
+	with open('2.csv',encoding='utf8') as csvfile:
+	    reader = csv.DictReader(csvfile)
+	    for row in reader:
+	    	a='abc'
+	    	b=int(row['b'])
+	    	Diseases = Disease()
+	    	Diseases.name = row['a']
+	    	Diseases.occur = b
+	    	Diseases.save()
+
+			#print ('Error',a,b)
+
+	with open('symptoms.csv',encoding='utf8') as csvfile:
+		reader = csv.DictReader(csvfile)
+		for row in reader:
+			a='abc'
+			Diseases = Symptoms()
+			Diseases.symptom = row['a']
+			Diseases.save()
+
 	with open('csvfile2.csv', encoding='utf8') as csvfile:
 		reader = csv.DictReader(csvfile)
 		for row in reader:
