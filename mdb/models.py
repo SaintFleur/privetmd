@@ -11,12 +11,14 @@ class Disease(models.Model):
         self.save()
     def __str__(self):
         return self.name
+
 class Symptoms(models.Model):
     symptom = models.CharField(max_length=200)
     def publish(self):
         self.save()
     def __str__(self):
         return self.symptom
+        
 class Dataset(models.Model):
     disease = models.ForeignKey(Disease)
     symptom = models.ForeignKey(Symptoms)

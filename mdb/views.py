@@ -7,11 +7,22 @@ from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 import django_filters.rest_framework
-
 import csv
-# Create your views here.
+# Create your views here
 def index(request):
-	with open('2.csv',encoding='utf8') as csvfile:
+	if (Disease is not None):
+		print('\nEmptying the Database')
+		print('_________________________________________________________________')
+		delete_everything(Disease)
+		delete_everything(Symptoms)
+		delete_everything(Dataset)
+		print('\nThe Database was successfully emptied')
+		print('_________________________________________________________________')
+	else:
+		print('\nthe Database is empty')
+		print('_________________________________________________________________')
+		
+	with open('data/diseases.csv',encoding='utf8') as csvfile:
 	    reader = csv.DictReader(csvfile)
 	    for row in reader:
 	    	a='abc'
@@ -20,34 +31,38 @@ def index(request):
 	    	Diseases.name = row['a']
 	    	Diseases.occur = b
 	    	Diseases.save()
+	print(' \nThe Diseases were successfully uploaded')
+	print('_________________________________________________________________')
 
-			#print ('Error',a,b)
-
-	with open('symptoms.csv',encoding='utf8') as csvfile:
+	
+	with open('data/symptoms.csv',encoding='utf8') as csvfile:
 		reader = csv.DictReader(csvfile)
 		for row in reader:
 			a='abc'
 			Diseases = Symptoms()
 			Diseases.symptom = row['a']
 			Diseases.save()
+	print('\nThe Symptops were successfully uploaded')
+	print('_________________________________________________________________')
 
-	with open('csvfile2.csv', encoding='utf8') as csvfile:
+	with open('data/dataset.csv', encoding='utf8') as csvfile:
 		reader = csv.DictReader(csvfile)
 		for row in reader:
 			a = row['a']
 			b = row['b']
 			d = Disease.objects.filter(name=a)
 			s = Symptoms.objects.filter(symptom=b)
-			print('I got here2', d)
+			print('Dataset | Processing | Disease: ', d, '| Symptop: ', s)
 			ds = Dataset()
 			for i in d:
 				ds.disease = Disease.objects.get(id=i.id)
 			for i in s:
 				print(i.id)
-				ds.symptom =Symptoms.objects.get(id=i.id)
+				ds.symptom = Symptoms.objects.get(id=i.id)
 			ds.save()
-			#print ('Error',a,b)
-
+	print('\nThe Dataset was successfully created')
+	print('_________________________________________________________________')
+		
 	return render(request, 'index.html')
 
 # class IsOwnerFilterBackend(filters.BaseFilterBackend):
@@ -57,26 +72,18 @@ def index(request):
 #     def filter_queryset(self, request, queryset, view):
 #         return queryset.filter(owner=request.user)
 
-
-
-
+def delete_everything(obj):
+    obj.objects.all().delete()
 
 class DatasetList(APIView):
-
 	def get(self,request):
-		dataset =Dataset.objects.all()
+		dataset = Dataset.objects.all()
 		serializer = DatasetSerializer(dataset, many=True)
 		symptom = self.request.query_params.get('symptom', None)
 		if symptom is not None:
-			dataset=dataset.filter(symptom=symptom)
+			dataset = dataset.filter(symptom=symptom)
 			serializer = DatasetSerializer(dataset, many=True)
-
 		return Response(serializer.data)
-
-
-
-
-
 
 
 
